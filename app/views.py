@@ -29,3 +29,69 @@ def soma(request):
         return JsonResponse({'error': 'a e b devem ser números'}, status=400)
     
     return JsonResponse({'resultado': a + b})
+
+@csrf_exempt
+def subtracao(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Use POST'}, status=405)
+    
+    try:
+        data = json.loads(request.body)
+    except Exception:
+        return JsonResponse({'error': 'JSON inválido'}, status=400)
+    
+    a = data.get('a')
+    b = data.get('b')
+    
+    try:
+        a = float(a)
+        b = float(b)
+    except Exception:
+        return JsonResponse({'error': 'a e b devem ser números'}, status=400)
+    
+    return JsonResponse({'resultado': a - b})
+
+@csrf_exempt
+def multiplicacao(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Use POST'}, status=405)
+    
+    try:
+        data = json.loads(request.body)
+    except Exception:
+        return JsonResponse({'error': 'JSON inválido'}, status=400)
+    
+    a = data.get('a')
+    b = data.get('b')
+    
+    try:
+        a = float(a)
+        b = float(b)
+    except Exception:
+        return JsonResponse({'error': 'a e b devem ser números'}, status=400)
+    
+    return JsonResponse({'resultado': a * b})
+
+@csrf_exempt
+def divisao(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Use POST'}, status=405)
+    
+    try:
+        data = json.loads(request.body)
+    except Exception:
+        return JsonResponse({'error': 'JSON inválido'}, status=400)
+    
+    a = data.get('a')
+    b = data.get('b')
+    
+    try:
+        a = float(a)
+        b = float(b)
+    except Exception:
+        return JsonResponse({'error': 'a e b devem ser números'}, status=400)
+    
+    if b == 0:
+        return JsonResponse({'error': 'Divisão por zero não é permitida'}, status=400)
+    
+    return JsonResponse({'resultado': a / b})
