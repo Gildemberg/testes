@@ -28,7 +28,7 @@ def soma(request):
     except Exception:
         return JsonResponse({'error': 'a e b devem ser números'}, status=400)
     
-    return JsonResponse({'resultado': a + b})
+    return JsonResponse({'resultado': a * b})
 
 @csrf_exempt
 def subtracao(request):
