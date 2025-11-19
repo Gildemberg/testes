@@ -5,7 +5,7 @@ import json
 
 def index(request):
     return JsonResponse(
-        {"message": "Aplicação Programação Avançada - qualidade_software - OK"}
+        {"message": "Aplicação está no ar - OK"}
     )
 
 
